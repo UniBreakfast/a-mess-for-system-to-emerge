@@ -1,0 +1,21 @@
+{
+  "name": "a-mess-for-system-to-emerge",
+  "version": "1.0.0",
+  "description": "One project to put everything I want to do into it for some time. The longer the better. The goal is to create a mess and to force myself to develop some sort of system/methodology to work with. I'm not sure if I'll be able to do it, but I'm trying.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UniBreakfast/a-mess-for-system-to-emerge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UniBreakfast/a-mess-for-system-to-emerge/issues"
+  },
+  "homepage": "https://github.com/UniBreakfast/a-mess-for-system-to-emerge#readme"
+}
