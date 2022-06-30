@@ -1,0 +1,150 @@
+.burger-btn {
+  position: fixed;
+  z-index: 1;
+  top: var(--finger-width);
+  right: var(--finger-width);
+  width: var(--finger-width);
+  height: calc(var(--finger-width) * 0.8);
+  background-color: black;
+  transition: 500ms, width, height, top, right;
+  outline: none;
+}
+
+:checked+.burger-btn {
+  border-radius: calc(var(--finger-width) * 0.1);
+  transform: scale(0.8) scaleX(0.9);
+}
+
+.burger-btn>label::before, .burger-btn>label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background-color: var(--background-color);
+  transition: 500ms;
+}
+
+.burger-btn>label::before {
+  top: 20%;
+}
+
+.burger-btn>label::after {
+  top: 60%;
+}
+
+:checked+.burger-btn>label::before, 
+:checked+.burger-btn>label::after {
+  top: 40%;
+  border-radius: calc(var(--finger-width) * 0.1);
+}
+
+:checked+.burger-btn>label::before {
+  transform: scaleY(0.9) rotate(0.625turn);
+}
+
+:checked+.burger-btn>label::after {
+  transform: scaleY(0.9) rotate(0.875turn);
+}
+
+.burger-menu [for="menu-toggle"] {
+  inset: 0;
+  position: absolute;
+}
+
+.burger-menu>.menu {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 500ms;
+}
+
+.burger-menu>#menu-toggle:not(:checked)~.menu {
+  pointer-events: none;
+}
+
+.burger-menu>:checked~.menu {
+  background-color: var(--shade);
+}
+
+.burger-menu .container {
+  padding: var(--finger-width);
+  padding-top: calc(3 * var(--finger-width));
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(100%, 500px);
+  transition: 500ms, padding;
+  background-color: var(--background-color);
+  box-sizing: border-box;
+}
+
+.burger-menu .wrapper {
+  overflow: auto;
+  height: calc(100vh - 4 * var(--finger-width));
+}
+
+.burger-menu>#menu-toggle:not(:checked)~.menu>.container {
+  right: max(-100%, -500px);
+}
+
+.burger-menu ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: calc(0.2 * var(--finger-width));
+  padding: calc(0.3 * var(--finger-width)) 0;
+}
+
+.burger-menu li>label {
+  display: flex;
+  gap: calc(0.2 * var(--finger-width));
+  align-items: center;
+  position: relative;
+}
+
+.burger-menu :checked+span>.off,
+.burger-menu :not(:checked)+span>.on {
+  opacity: 0;
+}
+
+.burger-menu .eye {
+  display: block;
+  width: calc(var(--finger-width));
+  height: calc(var(--finger-width));
+  background-size: contain;
+  transition: 500ms;
+}
+
+.eye.on {
+  background-image: url('icons/eye.png');
+}
+
+.eye.off {
+  background-image: url('icons/hide.png');
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+}
+
+.burger-menu .btns {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 100%;
+}
+
+.burger-menu :not(:hover)>.btns {
+  display: none;
+}
+
+.burger-menu .btns>button {
+  font-size: 24px;
+  padding: 0 8px;
+}

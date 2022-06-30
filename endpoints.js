@@ -2,9 +2,14 @@ const endpointHandlers = {}
 
 module.exports = { endpointHandlers }
 
+const { resolve } = require('path/posix')
+
 const { buildFileList } = require('./list-files.js')
 const { getBody } = require('./get-body.js')
-const { buildDependencyList } = require('./list-dependencies.js')
+const { getDependencyPool } = require('./dependency-aggregation/get-dependency-pool.js')
+const { sortDependencyPool } = require('./dependency-aggregation/sort-dependency-pool.js')
+const { cleanUpDependencyPool } = require('./dependency-aggregation/clean-up-dependency-pool.js')
+
 
 Object.assign(endpointHandlers, {
   'GET/greeting': async () => {
@@ -28,8 +33,11 @@ Object.assign(endpointHandlers, {
   },
   
   'GET/dependencies': async () => {
-    const dependencyList = await buildDependencyList()
+    const dependencyPool = await getDependencyPool(resolve('./index.js'), { recurse: true })
+
+    sortDependencyPool(dependencyPool)
+    cleanUpDependencyPool(dependencyPool)
     
-    return {body: dependencyList}
+    return {body: dependencyPool}
   }
 })

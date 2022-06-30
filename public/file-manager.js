@@ -19,12 +19,14 @@ class FileManager {
     this.parent.replaceChildren(div)
     this.el = div
     div.append(breadcrumbs, ul)
-    Object.assign(this, {ul, breadcrumbs})
+    Object.assign(this, { ul, breadcrumbs })
     div.className = 'file-manager'
     breadcrumbs.className = 'breadcrumbs'
     ul.className = 'file-list'
 
     this.addListeners()
+
+    if (this.path) this.goTo(this.path)
   }
 
   getData(path) {
@@ -35,10 +37,12 @@ class FileManager {
 
   async goTo(path) {
     const list = await this.getData(path)
+    const { breadcrumbs, ul } = this
 
     this.path = path
-    this.breadcrumbs.innerHTML = buildBreadcrumbs(path)
-    this.ul.innerHTML = list.map(buildEntityItem.bind(path)).join('')
+
+    if (breadcrumbs) breadcrumbs.innerHTML = buildBreadcrumbs(path)
+    if (ul) ul.innerHTML = list.map(buildEntityItem.bind(path)).join('')
   }
 
   addListeners() {
@@ -47,7 +51,6 @@ class FileManager {
 
       e.preventDefault()
       this.goTo('.' + e.target.href.slice(6))
-
     }, true)
   }
 }

@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
   <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="vars.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="burger-menu.css">
 
   <script src="script.js" defer></script>
   <script src="app.js" type="module"></script>
@@ -18,8 +20,80 @@
   <header>
     <h1>A mess for system to emerge</h1>
   </header>
-  
+
   <div id="wrapper"></div>
+
+  <aside class="burger-menu">
+    <input type="checkbox" id="menu-toggle" hidden checked>
+
+    <button class="burger-btn clean">
+      <label for="menu-toggle"></label>
+    </button>
+
+    <div class="menu">
+      <div class="container">
+        <div class="wrapper">
+          <ul>
+            <li>
+              <label>
+                <input type="checkbox" hidden>
+
+                <span>
+                  <i class="eye on"></i>
+                  <i class="eye off"></i>
+                </span>
+
+                <span>Section name</span>
+
+                <div class="btns">
+                  <button class="up clean">▲</button>
+                  <button class="down clean">▼</button>
+                </div>
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input type="checkbox" hidden>
+
+                <span>
+                  <i class="eye on"></i>
+                  <i class="eye off"></i>
+                </span>
+
+                <span>Section name</span>
+
+                <div class="btns">
+                  <button class="up clean">▲</button>
+                  <button class="down clean">▼</button>
+                </div>
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input type="checkbox" hidden>
+
+                <span>
+                  <i class="eye on"></i>
+                  <i class="eye off"></i>
+                </span>
+
+                <span>Section name</span>
+
+                <div class="btns">
+                  <button class="up clean">▲</button>
+                  <button class="down clean">▼</button>
+                </div>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <label for="menu-toggle"></label>
+    </div>
+  </aside>
 
 </body>
 

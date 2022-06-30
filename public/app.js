@@ -1,12 +1,16 @@
-import { FileManager } from "./file-manager.js"
+import { loadStoredViewConfig } from './view-config.js'
+import { addSidebar } from './sidebar.js'
+import { showViewPanels } from './view-panels.js'
 
-import { apiCall } from "./api-call.js"
+main()
 
-const wrapper = document.getElementById("wrapper")
-const fileManager = new FileManager
+async function main() {
+  const viewConfig = loadStoredViewConfig()
 
-fileManager.settleAt(wrapper)
-fileManager.render()
-fileManager.goTo(".")
-
-apiCall("dependencies").then(console.log)
+  if (viewConfig) {
+    addSidebar()
+    showViewPanels(viewConfig)
+  } else {
+    addSidebar({ open: true })
+  }
+}

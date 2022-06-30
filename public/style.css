@@ -4,3 +4,15 @@
   border-radius: 10px;
   display: inline-block;
 }
+
+::-webkit-scrollbar {
+  width: var(--finger-width);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-width: calc(0.4 * var(--finger-width));
+  border-style: solid;
+  border-color: var(--background-color);
+  border-radius: var(--finger-width);
+}

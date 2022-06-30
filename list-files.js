@@ -10,7 +10,7 @@ async function buildFileList(path = '.') {
       return { name, isFolder: stats.isDirectory() }
     })
   )
-
+  
   return list.sort(compareEntities)
 }
 

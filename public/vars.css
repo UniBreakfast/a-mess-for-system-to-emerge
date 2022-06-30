@@ -1,0 +1,9 @@
+:root {
+  --background-color: cornsilk;
+  --finger-width: max(3vw, 40px);
+  --shade: #4444
+}
+
+body {
+  background-color: var(--background-color);
+}
